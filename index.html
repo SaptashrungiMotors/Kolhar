@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saptashrungi Motors Kolhar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt: #15171A;
+    --asphalt-2: #1D2024;
+    --amber: #FF8C2B;
+    --amber-dim: #C96A1C;
+    --bone: #F2EFE9;
+    --steel: #3A3D42;
+    --steel-light: #54585F;
+    --green-go: #3FAE5A;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  body{
+    background: var(--asphalt);
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(255,140,43,0.08), transparent 55%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 14px);
+    color: var(--bone);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 28px 16px 48px;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* ---- Header / plate ---- */
+  header{
+    text-align: center;
+    padding: 6px 0 22px;
+  }
+
+  .moto-tag{
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .plate{
+    display: inline-block;
+    background: var(--bone);
+    color: var(--asphalt);
+    border-radius: 6px;
+    padding: 14px 22px 12px;
+    border: 3px solid var(--steel);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.35), 0 10px 18px rgba(0,0,0,0.4);
+    position: relative;
+    transform: rotate(-1deg);
+  }
+
+  .plate::before{
+    content: "";
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 3px;
+    pointer-events: none;
+  }
+
+  .plate .bolt{
+    position:absolute;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--steel-light);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.5);
+  }
+  .plate .bolt.tl{ top: 7px; left: 7px; }
+  .plate .bolt.tr{ top: 7px; right: 7px; }
+  .plate .bolt.bl{ bottom: 7px; left: 7px; }
+  .plate .bolt.br{ bottom: 7px; right: 7px; }
+
+  .plate h1{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  .plate .sub{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-dim);
+    margin-top: 4px;
+  }
+
+  .location-line{
+    margin-top: 16px;
+    font-size: 13px;
+    color: #B9B6AF;
+    letter-spacing: 0.02em;
+  }
+  .location-line strong{ color: var(--bone); font-weight: 600; }
+
+  /* ---- Dashboard section ---- */
+  .dash-label{
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--steel-light);
+    margin: 28px 0 10px 4px;
+  }
+
+  /* WhatsApp - primary, dial styled */
+  .whatsapp-btn{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    background: linear-gradient(180deg, #28C76F, #1FA85B);
+    border: none;
+    border-radius: 14px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: #0A2410;
+    box-shadow: 0 4px 0 #0F7A39, 0 8px 16px rgba(31,168,91,0.25);
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .whatsapp-btn:active{
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #0F7A39, 0 4px 8px rgba(31,168,91,0.2);
+  }
+  .whatsapp-btn .icon-circle{
+    flex-shrink: 0;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(10,36,16,0.12);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .whatsapp-btn .icon-circle svg{ width: 22px; height: 22px; }
+  .whatsapp-btn .label-block{ display:flex; flex-direction:column; line-height:1.2; }
+  .whatsapp-btn .label-main{
+    font-family:'Oswald', sans-serif;
+    font-weight:700; font-size:17px;
+    text-transform: uppercase; letter-spacing:0.02em;
+  }
+  .whatsapp-btn .label-sub{ font-size:12.5px; color:#0A2410; opacity:0.75; margin-top:1px; }
+  .whatsapp-btn .arrow{ margin-left:auto; opacity:0.55; }
+
+  /* Call options row */
+  .call-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .call-chip{
+    background: var(--asphalt-2);
+    border: 1.5px solid var(--steel);
+    border-radius: 12px;
+    padding: 14px 8px 12px;
+    text-align:center;
+    text-decoration:none;
+    color: var(--bone);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    transition: border-color 0.15s ease, transform 0.08s ease;
+  }
+  .call-chip:active{ transform: translateY(2px); }
+  .call-chip:hover{ border-color: var(--amber-dim); }
+  .call-chip svg{ width:18px; height:18px; color: var(--amber); }
+  .call-chip .num{ font-size: 12.5px; font-weight:600; letter-spacing:0.01em; }
+  .call-chip .role{
+    font-family:'Oswald', sans-serif;
+    font-size: 9.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--steel-light);
+  }
+
+  /* Secondary links */
+  .link-row{
+    display:flex; flex-direction:column; gap: 10px; margin-top: 12px;
+  }
+  .link-btn{
+    display:flex; align-items:center; gap:14px;
+    background: var(--asphalt-2);
+    border: 1.5px solid var(--steel);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-decoration:none;
+    color: var(--bone);
+    transition: border-color 0.15s ease, transform 0.08s ease;
+  }
+  .link-btn:active{ transform: translateY(2px); }
+  .link-btn:hover{ border-color: var(--amber-dim); }
+  .link-btn .icon-circle{
+    flex-shrink:0;
+    width:40px; height:40px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .link-btn.maps .icon-circle{ background: rgba(255,140,43,0.14); }
+  .link-btn.insta .icon-circle{ background: radial-gradient(circle at 30% 30%, #ffdb8c, #ee2a7b 55%, #6228d7); }
+  .link-btn .icon-circle svg{ width:20px; height:20px; }
+  .link-btn .label-main{ font-weight:600; font-size:14.5px; }
+  .link-btn .label-sub{ font-size:12px; color:#9C9890; margin-top:1px; }
+  .link-btn .arrow{ margin-left:auto; opacity:0.4; }
+
+  footer{
+    text-align:center;
+    margin-top: 34px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--steel-light);
+  }
+  footer .rev{
+    font-family:'Oswald', sans-serif;
+    color: var(--amber-dim);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <header>
+    <div class="moto-tag">Sales · Service · Spares</div>
+    <div class="plate">
+      <span class="bolt tl"></span><span class="bolt tr"></span>
+      <span class="bolt bl"></span><span class="bolt br"></span>
+      <h1>Saptashrungi<br>Motors</h1>
+      <div class="sub">Kolhar</div>
+    </div>
+    <div class="location-line">Find us in <strong>Kolhar</strong> — tap below for directions</div>
+  </header>
+
+  <div class="dash-label">Get in touch</div>
+
+  <a class="whatsapp-btn" href="https://wa.me/918624861717" target="_blank" rel="noopener">
+    <span class="icon-circle">
+      <svg viewBox="0 0 24 24" fill="#0A2410"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.45 1.29 4.89L2 22l5.34-1.39c1.38.75 2.96 1.18 4.65 1.18h.01c5.46 0 9.91-4.45 9.91-9.91C21.91 6.45 17.5 2 12.04 2zm5.81 14.06c-.25.69-1.43 1.32-1.97 1.4-.5.08-1.14.11-1.84-.12-.42-.13-.97-.31-1.67-.61-2.94-1.27-4.86-4.22-5.01-4.42-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.45.51-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.08.13.08.74-.18 1.43z"/></svg>
+    </span>
+    <span class="label-block">
+      <span class="label-main">WhatsApp</span>
+      <span class="label-sub">Quickest way to reach us</span>
+    </span>
+    <span class="arrow">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A2410" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+    </span>
+  </a>
+
+  <div class="call-grid">
+    <a class="call-chip" href="tel:+918624861717">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num">86248 61717</span>
+      <span class="role">Primary</span>
+    </a>
+    <a class="call-chip" href="tel:+919860167516">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num">98601 67516</span>
+      <span class="role">Shop</span>
+    </a>
+    <a class="call-chip" href="tel:+919175016612">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="num">91750 16612</span>
+      <span class="role">Service</span>
+    </a>
+  </div>
+
+  <div class="dash-label">Visit &amp; follow</div>
+
+  <div class="link-row">
+    <a class="link-btn maps" href="https://maps.app.goo.gl/CyiGsXUbGD37y2M89" target="_blank" rel="noopener">
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF8C2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <span class="label-block" style="display:flex;flex-direction:column;">
+        <span class="label-main">Google Maps</span>
+        <span class="label-sub">Get directions to our shop</span>
+      </span>
+      <span class="arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="link-btn insta" href="https://www.instagram.com/saptashrungi_motors_kolhar?igsh=emd5cWN1YWx4ajNn" target="_blank" rel="noopener">
+      <span class="icon-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </span>
+      <span class="label-block" style="display:flex;flex-direction:column;">
+        <span class="label-main">Instagram</span>
+        <span class="label-sub">@saptashrungi_motors_kolhar</span>
+      </span>
+      <span class="arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <footer>
+    <span class="rev">●</span> ALWAYS ON THE ROAD <span class="rev">●</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
