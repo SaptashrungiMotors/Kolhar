@@ -87,7 +87,7 @@
     letter-spacing: 0.01em;
   }
 
-  .address-band{
+  a.address-band{
     margin-top: 18px;
     display:inline-flex;
     align-items:center;
@@ -98,7 +98,11 @@
     padding: 8px 16px 8px 12px;
     font-size: 12.5px;
     color: var(--bone);
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.08s ease;
   }
+  a.address-band:hover{ border-color: var(--gold-deep); }
+  a.address-band:active{ transform: translateY(1px); }
   .address-band svg{ width:14px; height:14px; color: var(--gold); flex-shrink:0; }
   .address-band b{ color: var(--gold); font-weight:600; }
 
@@ -252,10 +256,10 @@
     </div>
     <h1>Saptashrungi Motors</h1>
     <div class="signature-line">Pre-Owned Cars</div>
-    <div class="address-band">
+    <a class="address-band" href="https://maps.app.goo.gl/CyiGsXUbGD37y2M89" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       Now at <b>Chincholi Phata</b>
-    </div>
+    </a>
     <div class="services">
       <span class="service-pill">Buy</span>
       <span class="service-pill">Sell</span>
